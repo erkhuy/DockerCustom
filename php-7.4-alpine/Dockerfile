@@ -36,16 +36,15 @@ RUN apk add --no-cache \
 
 # Install PECL and PEAR extensions
 RUN pecl install \
-    imagick \
     xdebug
 
 # Enable PECL and PEAR extensions
-RUN docker-php-ext-enable imagick
 
-#RUN docker-php-ext-enable \
- #   xdebug
-#RUN docker-php-ext-enable xdebug \
-#&& echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini 
+RUN docker-php-ext-enable \
+   xdebug
+
+RUN docker-php-ext-enable xdebug \
+&& echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini 
 
 
 # Configure php extensions
